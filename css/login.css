@@ -1,0 +1,401 @@
+/* Cài đặt hình nền và font chữ chung (từ code 1) */
+
+body {
+    background-image: url('static/bg_login.jpg');
+    /* Đảm bảo đường dẫn này đúng */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /* Sử dụng min-height thay vì height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f2f5;
+    /* Màu nền dự phòng nếu ảnh lỗi */
+}
+
+
+/* Container cho nút trigger (tùy chọn, chỉ để căn giữa nút) */
+
+.trigger-container {
+    text-align: center;
+    padding: 50px;
+    /* Tạo khoảng trống xung quanh nút */
+}
+
+
+/* === Styling cho Modal Content dựa trên style .card cũ === */
+
+
+/* Điều chỉnh kích thước modal (từ code 2) */
+
+.modal-dialog {
+    max-width: 600px;
+    /* Tăng kích thước để chứa nhiều trường hơn */
+}
+
+
+/* Áp dụng style .card cho .modal-content */
+
+.modal-content.card {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* Giữ lại overflow hidden */
+    border: none;
+    /* Bỏ border mặc định của modal */
+}
+
+
+/* Style cho header modal (từ code 1 .card-header) */
+
+.modal-header.card-header {
+    text-align: center;
+    /* font-size: 28px; /* Có thể giảm bớt cho phù hợp modal */
+    font-weight: bold;
+    background-color: #ec0b0b;
+    /* Giữ màu đỏ */
+    color: white;
+    padding: 15px 20px;
+    /* Giảm padding một chút */
+    border-bottom: none;
+    /* Bỏ đường viền dưới của modal header */
+    justify-content: center;
+    /* Căn giữa tiêu đề khi nút close ở góc */
+    position: relative;
+    /* Để định vị nút close */
+}
+
+
+/* Đặt lại vị trí và màu nút close cho dễ nhìn */
+
+.modal-header .btn-close {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    filter: brightness(0) invert(1);
+    /* Đổi màu thành trắng */
+    opacity: 0.8;
+}
+
+.modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+.modal-header .modal-title {
+    width: 100%;
+    /* Đảm bảo tiêu đề chiếm đủ không gian để căn giữa */
+    padding-right: 30px;
+    /* Tạo khoảng trống cho nút close */
+}
+
+
+/* Style cho body modal (từ code 1 .card-body) */
+
+.modal-body.card-body {
+    padding: 25px 30px;
+    /* Tăng padding một chút */
+    background-color: white;
+}
+
+
+/* Style cho tabs (từ code 1) */
+
+.nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+    /* Giữ lại border bottom mặc định của tab */
+    margin-bottom: 25px;
+    /* Tăng khoảng cách dưới tab */
+}
+
+.nav-tabs .nav-link {
+    color: #007bff;
+    font-size: 18px;
+    /* Giữ nguyên font size */
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 20px;
+    border: none;
+    /* Bỏ border mặc định của nav-link */
+    border-bottom: 3px solid transparent;
+    /* Đường gạch dưới khi không active */
+    transition: color 0.3s ease, border-color 0.3s ease;
+    /* Thêm transition */
+}
+
+.nav-tabs .nav-link:hover {
+    color: #0056b3;
+    border-bottom-color: #ddd;
+    /* Gạch dưới mờ khi hover */
+}
+
+.nav-tabs .nav-link.active {
+    color: #ec0b0b;
+    /* Đổi màu active thành màu đỏ header */
+    background-color: transparent;
+    /* Bỏ background */
+    border-color: transparent;
+    /* Bỏ border mặc định */
+    border-bottom: 3px solid #ec0b0b;
+    /* Đường gạch dưới màu đỏ khi active */
+    font-weight: bold;
+    /* Đảm bảo chữ đậm */
+}
+
+
+/* Style cho form group và control (từ code 1) */
+
+.form-group {
+    margin-bottom: 1rem;
+    /* Giữ khoảng cách mặc định của Bootstrap hoặc tùy chỉnh */
+}
+
+
+/* Style chung cho input, select */
+
+.form-control,
+.form-select {
+    border-radius: 10px;
+    /* Bo góc */
+    border: 1px solid #ced4da;
+    padding: 10px 12px;
+    /* Điều chỉnh padding */
+    font-size: 16px;
+    box-shadow: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    /* Thêm transition cho box-shadow */
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #e7240a;
+    /* Màu đỏ khi focus */
+    box-shadow: 0 0 0 0.2rem rgba(236, 11, 11, 0.25);
+    /* Shadow màu đỏ nhạt khi focus */
+}
+
+
+/* Thêm style cho form-select để trông giống form-control hơn */
+
+.form-select {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-position: right 0.75rem center;
+    /* Căn lại icon mũi tên */
+}
+
+
+/* Style cho nút bấm (từ code 1 .btn-custom) */
+
+.btn-custom {
+    background-color: #007bff;
+    /* Giữ màu xanh gốc */
+    color: white;
+    border-radius: 25px;
+    /* Bo tròn */
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    /* Giữ width 100% */
+    text-transform: uppercase;
+    /* Viết hoa chữ */
+    letter-spacing: 0.5px;
+    /* Tăng khoảng cách chữ */
+}
+
+.btn-custom:hover {
+    background-color: #0056b3;
+    /* Màu xanh đậm hơn khi hover */
+}
+
+
+/* Style cho footer modal (từ code 1 .card-footer) */
+
+.card-footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    /* Màu nền footer */
+    border-top: 1px solid #dee2e6;
+    /* Thêm đường kẻ trên */
+}
+
+.card-footer small {
+    font-size: 0.9em;
+    /* Kích thước chữ nhỏ */
+    color: #6c757d;
+    /* Màu chữ xám */
+}
+
+.card-footer a.link-toggle {
+    /* Style cho link chuyển tab */
+    color: #e71708;
+    /* Màu đỏ */
+    text-decoration: none;
+    font-weight: 500;
+    /* Hơi đậm */
+}
+
+.card-footer a.link-toggle:hover {
+    text-decoration: underline;
+    color: #bf0d00;
+    /* Đỏ đậm hơn khi hover */
+}
+
+
+/* === Style cho các thành phần mới từ code 2 === */
+
+
+/* Style cho input group (ngày sinh, captcha) */
+
+.input-group-text {
+    background-color: #e9ecef;
+    /* Màu nền xám nhạt */
+    border: 1px solid #ced4da;
+    border-right: none;
+    /* Bỏ border phải để liền với input */
+    border-radius: 10px 0 0 10px;
+    /* Bo góc trái */
+    color: #495057;
+}
+
+.input-group .form-control {
+    border-radius: 0 10px 10px 0;
+    /* Bo góc phải cho input trong group */
+}
+
+.input-group> :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    margin-left: -1px;
+    /* Fix khoảng cách nhỏ giữa các phần tử input group */
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+
+/* Icon calendar */
+
+.input-group-text .fa-calendar {
+    color: #007bff;
+    /* Màu xanh cho icon */
+}
+
+
+/* Style cho ô hiển thị Captcha */
+
+.captcha-code-display {
+    font-weight: bold;
+    letter-spacing: 2px;
+    /* Tăng khoảng cách chữ captcha */
+    font-size: 1.1em;
+    color: #dc3545;
+    /* Màu đỏ cho captcha */
+    background-color: #f8f9fa;
+    /* Nền hơi khác */
+    padding: 10px 15px;
+    /* Tăng padding */
+    border-radius: 10px 0 0 10px;
+    /* Bo góc trái */
+    border: 1px solid #ced4da;
+    border-right: none;
+    user-select: none;
+    /* Không cho bôi đen text captcha */
+}
+
+
+/* Nút tải lại captcha */
+
+.input-group .btn-secondary {
+    border-radius: 0 10px 10px 0 !important;
+    /* Bo góc phải cho nút */
+    border: 1px solid #ced4da;
+    border-left: none;
+    background-color: #6c757d;
+    /* Màu xám */
+}
+
+.input-group .btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+
+/* Style cho thông báo lỗi (từ code 2) */
+
+.error-message {
+    color: #dc3545;
+    /* Màu đỏ cho lỗi */
+    font-size: 0.875em;
+    /* Kích thước chữ nhỏ hơn */
+    margin-top: 0.25rem;
+    /* Khoảng cách nhỏ phía trên */
+    display: block;
+    /* Đảm bảo luôn hiển thị thành block */
+}
+
+
+/* Điều chỉnh khoảng cách cột trong form đăng ký (từ code 2) */
+
+.register-form .row>* {
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+}
+
+
+/* Bỏ margin-bottom mặc định của Bootstrap nếu dùng form-group */
+
+.register-form .row .form-group {
+    margin-bottom: 0;
+    /* Reset margin nếu dùng .row */
+}
+
+
+/* Thêm lại margin-bottom cho các row */
+
+.register-form .row {
+    margin-bottom: 1rem;
+}
+
+
+/* Responsive adjustments (từ code 1, có thể cần chỉnh thêm) */
+
+@media (max-width: 767px) {
+    /* Điều chỉnh breakpoint cho modal */
+    .modal-dialog {
+        max-width: 95%;
+        margin: 1.75rem auto;
+        /* Căn giữa và thêm khoảng cách trên dưới */
+    }
+    .modal-body.card-body {
+        padding: 20px;
+        /* Giảm padding trên mobile */
+    }
+    .nav-tabs .nav-link {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .modal-header.card-header {
+        /* font-size: 20px; /* Giảm font size header */
+        padding: 12px 15px;
+    }
+    .modal-header .btn-close {
+        right: 15px;
+    }
+    .modal-header .modal-title {
+        padding-right: 25px;
+        /* Giảm khoảng trống cho nút close */
+    }
+    /* Có thể xếp chồng các cột trong form đăng ký nếu cần */
+    /* .register-form .row .col-md-6 {
+        width: 100%;
+    } */
+}

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký & Đăng Nhập</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/script.js"></script>
+</head>
+
+<body>
+    <div class="trigger-container">
+        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#combinedModal">
+            Đăng Nhập / Đăng Ký
+        </button>
+    </div>
+
+    <div class="modal fade" id="combinedModal" tabindex="-1" aria-labelledby="combinedModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content card">
+                <div class="modal-header card-header">
+                    <h5 class="modal-title" id="combinedModalLabel">Đăng Nhập / Đăng Ký</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body card-body">
+                    <ul class="nav nav-tabs" id="outerTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="login-tab-modal" data-bs-toggle="tab" data-bs-target="#login-pane" type="button" role="tab" aria-controls="login-pane" aria-selected="true">Đăng Nhập</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="register-tab-modal" data-bs-toggle="tab" data-bs-target="#register-pane" type="button" role="tab" aria-controls="register-pane" aria-selected="false">Đăng Ký</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="outerTabContent">
+                        <!-- Login Pane -->
+                        <div class="tab-pane fade show active" id="login-pane" role="tabpanel" aria-labelledby="login-tab-modal">
+                            <!-- Thêm novalidate và id cho form -->
+                            <form action="#" method="POST" class="login-form" id="loginForm" novalidate>
+                                <div class="form-group mb-3 position-relative">
+                                    <!-- Thêm position-relative nếu muốn icon feedback -->
+                                    <label for="loginEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="loginEmail" name="email" required placeholder="Nhập email">
+                                    <!-- Thông báo lỗi chuẩn Bootstrap -->
+                                    <div class="invalid-feedback">
+                                        Vui lòng nhập địa chỉ email hợp lệ.
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 position-relative">
+                                    <label for="loginPassword" class="form-label">Mật khẩu</label>
+                                    <input type="password" class="form-control" id="loginPassword" name="password" required placeholder="Nhập mật khẩu">
+                                    <!-- Thông báo lỗi chuẩn Bootstrap -->
+                                    <div class="invalid-feedback">
+                                        Vui lòng nhập mật khẩu.
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe" name="remember">
+                                    <label class="form-check-label" for="rememberMe">Lưu Tài Khoản</label>
+                                </div>
+                                <button type="submit" class="btn btn-custom w-100">Đăng Nhập</button>
+                                <!-- Khu vực hiển thị lỗi chung (ví dụ: sai tk/mk) -->
+                                <div id="loginErrorGeneral" class="invalid-feedback d-block text-center mt-3"></div>
+                            </form>
+                        </div>
+
+                        <!-- Register Pane -->
+                        <div class="tab-pane fade" id="register-pane" role="tabpanel" aria-labelledby="register-tab-modal">
+                            <!-- Thêm novalidate và id cho form, bỏ onsubmit -->
+                            <form action="#" method="POST" class="register-form" id="registerForm" novalidate>
+                                <div class="form-group mb-3 position-relative">
+                                    <label for="registerName" class="form-label">Họ và Tên</label>
+                                    <input type="text" class="form-control" id="registerName" name="name" required placeholder="Nhập họ và tên">
+                                    <div class="invalid-feedback">Vui lòng nhập họ và tên.</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 form-group mb-3 position-relative">
+                                        <label for="registerPhone" class="form-label">Số điện thoại</label>
+                                        <input type="tel" class="form-control" id="registerPhone" name="phone" required pattern="^(0\d{9})$" placeholder="Nhập số điện thoại">
+                                        <!-- Thêm pattern để trình duyệt/bootstrap hỗ trợ kiểm tra định dạng -->
+                                        <div class="invalid-feedback">Vui lòng nhập số điện thoại hợp lệ (10 số, bắt đầu bằng 0).</div>
+                                    </div>
+                                    <div class="col-md-6 form-group mb-3 position-relative">
+                                        <label for="registerGender" class="form-label">Giới tính</label>
+                                        <select class="form-select form-control" id="registerGender" name="gender" required>
+                                            <option selected disabled value="">Chọn giới tính</option>
+                                            <option value="male">Nam</option>
+                                            <option value="female">Nữ</option>
+                                            <option value="other">Khác</option>
+                                        </select>
+                                        <div class="invalid-feedback">Vui lòng chọn giới tính.</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3 position-relative">
+                                    <label for="registerEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="registerEmail" name="email" required placeholder="Nhập email">
+                                    <div class="invalid-feedback">Vui lòng nhập địa chỉ email hợp lệ.</div>
+                                    <!-- Thêm phản hồi cho email đã tồn tại -->
+                                    <div id="registerEmailTakenFeedback" class="invalid-feedback"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 form-group mb-3 position-relative">
+                                        <label for="registerPassword" class="form-label">Mật khẩu</label>
+                                        <input type="password" class="form-control" id="registerPassword" name="password" required minlength="6" placeholder="Mật khẩu (ít nhất 6 ký tự)">
+                                        <!-- Thêm minlength -->
+                                        <div class="invalid-feedback">Mật khẩu phải có ít nhất 6 ký tự.</div>
+                                    </div>
+                                    <div class="col-md-6 form-group mb-3 position-relative">
+                                        <label for="registerConfirmPassword" class="form-label">Nhập lại Mật khẩu</label>
+                                        <input type="password" class="form-control" id="registerConfirmPassword" name="confirmPassword" required placeholder="Nhập lại mật khẩu">
+                                        <div class="invalid-feedback">Vui lòng nhập lại mật khẩu.</div>
+                                        <div id="registerConfirmPasswordError" class="invalid-feedback"></div>
+                                        <!-- Riêng cho lỗi không khớp -->
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 form-group mb-3 position-relative">
+                                        <label for="registerCity" class="form-label">Tỉnh/Thành phố</label>
+                                        <select class="form-select form-control" id="registerCity" name="city" required>
+                                            <option selected disabled value="">Chọn tỉnh thành</option>
+                                            <option value="hcm">Hồ Chí Minh</option>
+                                            <option value="bd">Bình Dương</option>
+                                            <option value="hn">Hà Nội</option>
+                                            <option value="dn">Đà Nẵng</option>
+                                        </select>
+                                        <div class="invalid-feedback">Vui lòng chọn tỉnh/thành phố.</div>
+                                    </div>
+                                    <div class="col-md-6 form-group mb-3 position-relative">
+                                        <label for="registerDistrict" class="form-label">Quận/Huyện</label>
+                                        <select class="form-select form-control" id="registerDistrict" name="district" required>
+                                            <option selected disabled value="">Chọn quận huyện</option>
+                                            <option value="tdm">Thủ Dầu Một</option>
+                                            <option value="q1">Quận 1</option>
+                                            <option value="q2">Quận 2</option>
+                                            <option value="q3">Quận 3</option>
+                                        </select>
+                                        <div class="invalid-feedback">Vui lòng chọn quận/huyện.</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3 position-relative">
+                                    <label for="registerAddress" class="form-label">Địa chỉ</label>
+                                    <input type="text" class="form-control" id="registerAddress" name="address" required placeholder="Nhập địa chỉ (số nhà, đường, phường/xã)">
+                                    <div class="invalid-feedback">Vui lòng nhập địa chỉ.</div>
+                                </div>
+
+                                <div class="form-group mb-3 position-relative">
+                                    <label for="registerBirthdate" class="form-label">Ngày sinh</label>
+                                    <div class="input-group has-validation">
+                                        <!-- Thêm has-validation cho input-group -->
+                                        <span class="input-group-text">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        <input type="date" class="form-control" id="registerBirthdate" name="birthdate" required>
+                                        <!-- Đặt invalid-feedback sau input-group -->
+                                        <div class="invalid-feedback w-100">Vui lòng chọn ngày sinh.</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3 position-relative">
+                                    <label class="form-label">Mã bảo mật</label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text captcha-code-display" id="captchaCode"></span>
+                                        <input type="text" class="form-control" id="registerCaptcha" name="captcha" required placeholder="Nhập mã bảo mật">
+                                        <button type="button" class="btn btn-secondary btn-sm" onclick="generateCaptcha()">
+                                            <i class="fas fa-sync-alt"></i> <!-- Icon thay chữ -->
+                                        </button>
+                                        <div class="invalid-feedback w-100">Vui lòng nhập đúng mã bảo mật.</div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 form-check position-relative">
+                                    <input type="checkbox" class="form-check-input" id="registerAgree" name="agree" required>
+                                    <label class="form-check-label" for="registerAgree">Tôi đã đọc và đồng ý với
+                                        <a href="#" target="_blank">Chính sách</a> của chương trình</label>
+                                    <div class="invalid-feedback">Bạn cần đồng ý với chính sách.</div>
+                                </div>
+
+                                <button type="submit" class="btn btn-custom w-100">Đăng Ký</button>
+                                <!-- Khu vực hiển thị lỗi chung đăng ký (nếu có) -->
+                                <div id="registerErrorGeneral" class="invalid-feedback d-block text-center mt-3"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <small>Chuyển đổi? <a href="#" class="link-toggle" onclick="switchTab(event)">Nhấn vào đây</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let captchaValue;
+
+        // --- CAPTCHA ---
+        function generateCaptcha() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'; // Chữ hoa + số
+            let captcha = '';
+            for (let i = 0; i < 6; i++) {
+                captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            const captchaDisplay = document.getElementById('captchaCode');
+            const captchaInput = document.getElementById('registerCaptcha');
+
+            if (captchaDisplay) captchaDisplay.textContent = captcha;
+            captchaValue = captcha;
+
+            // Reset validation state for captcha input when regenerated
+            if (captchaInput) {
+                captchaInput.classList.remove('is-invalid', 'is-valid');
+                captchaInput.value = ''; // Clear previous input
+                // Clear potential error message in the sibling invalid-feedback
+                const feedback = captchaInput.closest('.input-group').querySelector('.invalid-feedback');
+                if (feedback) feedback.textContent = 'Vui lòng nhập đúng mã bảo mật.'; // Reset to default msg
+            }
+            return captcha;
+        }
+
+        // --- FORM VALIDATION & SUBMISSION ---
+
+        (function() {
+            'use strict'; // Enable strict mode
+
+            // Generate initial CAPTCHA if element exists
+            if (document.getElementById('captchaCode')) {
+                captchaValue = generateCaptcha();
+            }
+
+            // Generate CAPTCHA when modal is shown
+            var combinedModal = document.getElementById('combinedModal');
+            if (combinedModal) {
+                combinedModal.addEventListener('shown.bs.modal', function(event) {
+                    if (document.getElementById('captchaCode')) {
+                        captchaValue = generateCaptcha();
+                    }
+                    // Reset forms validation state when modal opens
+                    resetFormValidation(document.getElementById('loginForm'));
+                    resetFormValidation(document.getElementById('registerForm'));
+                });
+            }
+
+            // Function to reset validation classes and messages for a form
+            function resetFormValidation(form) {
+                if (!form) return;
+                form.classList.remove('was-validated');
+                const inputs = form.querySelectorAll('.form-control, .form-select, .form-check-input');
+                inputs.forEach(input => {
+                    input.classList.remove('is-invalid', 'is-valid');
+                });
+                // Clear general error messages
+                const generalError = form.querySelector('[id$="ErrorGeneral"]'); // Selects loginErrorGeneral or registerErrorGeneral
+                if (generalError) generalError.textContent = '';
+                // Reset specific messages like email taken or password mismatch
+                clearSpecificError('registerEmailTakenFeedback');
+                clearSpecificError('registerConfirmPasswordError');
+                clearSpecificError('loginErrorGeneral');
+            }
+
+            // Function to clear specific error divs by ID
+            function clearSpecificError(elementId) {
+                const el = document.getElementById(elementId);
+                if (el) el.textContent = '';
+            }
+
+
+            // --- Login Form Handling ---
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    // Clear previous general error
+                    clearSpecificError('loginErrorGeneral');
+
+                    let isFormValid = loginForm.checkValidity(); // Use browser's built-in checks based on required, type=email etc.
+
+                    if (isFormValid) {
+                        // --- SIMULATE SERVER CHECK ---
+                        const email = document.getElementById('loginEmail').value;
+                        const password = document.getElementById('loginPassword').value;
+
+                        // Replace with actual AJAX call
+                        console.log('Login form valid (front-end). Simulating server call...');
+                        setTimeout(() => { // Simulate network delay
+                            // Example: Check against hardcoded credentials
+                            if (email === 'test@example.com' && password === 'password123') {
+                                alert('Đăng nhập thành công!');
+                                // bootstrap.Modal.getInstance(combinedModal).hide(); // Hide modal on success
+                                // window.location.href = '/dashboard'; // Redirect
+                            } else {
+                                // Show error using Bootstrap classes
+                                document.getElementById('loginEmail').classList.add('is-invalid');
+                                document.getElementById('loginPassword').classList.add('is-invalid');
+                                document.getElementById('loginErrorGeneral').textContent = 'Email hoặc mật khẩu không đúng.';
+                                isFormValid = false; // Mark form as invalid after server check
+                            }
+                        }, 500);
+                        // --- END SIMULATION ---
+                    }
+
+                    loginForm.classList.add('was-validated'); // Add class to show Bootstrap feedback styles
+                }, false);
+            }
+
+            // --- Register Form Handling ---
+            const registerForm = document.getElementById('registerForm');
+            if (registerForm) {
+                registerForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    // Clear previous general/specific errors before re-validating
+                    clearSpecificError('registerErrorGeneral');
+                    clearSpecificError('registerEmailTakenFeedback');
+                    clearSpecificError('registerConfirmPasswordError');
+                    // Ensure email input is not marked invalid due to 'taken' error before checking format
+                    document.getElementById('registerEmail').classList.remove('is-invalid');
+
+
+                    let isFormValid = registerForm.checkValidity(); // Basic HTML5 validation first
+
+                    // --- Custom Validations ---
+                    // 1. Password Confirmation
+                    const password = document.getElementById('registerPassword');
+                    const confirmPassword = document.getElementById('registerConfirmPassword');
+                    const confirmPasswordErrorDiv = document.getElementById('registerConfirmPasswordError');
+
+                    confirmPassword.classList.remove('is-invalid'); // Reset confirm password validity specifically
+                    confirmPasswordErrorDiv.textContent = '';
+
+                    if (password.value !== confirmPassword.value) {
+                        confirmPassword.classList.add('is-invalid');
+                        confirmPasswordErrorDiv.textContent = 'Mật khẩu xác nhận không khớp.';
+                        isFormValid = false;
+                    }
+
+                    // 2. CAPTCHA Validation
+                    const captchaInput = document.getElementById('registerCaptcha');
+                    const captchaFeedback = captchaInput.closest('.input-group').querySelector('.invalid-feedback');
+                    captchaInput.classList.remove('is-invalid'); // Reset captcha validity
+
+                    if (!captchaInput.value || captchaInput.value.trim().toLowerCase() !== String(captchaValue).toLowerCase()) {
+                        captchaInput.classList.add('is-invalid');
+                        // Use the existing feedback div for captcha
+                        if (captchaFeedback) captchaFeedback.textContent = 'Mã bảo mật không đúng.';
+                        isFormValid = false;
+                        generateCaptcha(); // Generate new captcha on failure
+                        captchaInput.focus();
+                    } else {
+                        // Explicitly mark as valid if correct (optional)
+                        // captchaInput.classList.add('is-valid');
+                    }
+                    // --- End Custom Validations ---
+
+
+                    if (isFormValid) {
+                        // --- SIMULATE SERVER CHECK (e.g., Email uniqueness) ---
+                        const email = document.getElementById('registerEmail').value;
+                        console.log('Register form valid (front-end). Simulating server call...');
+
+                        // Replace with actual AJAX call
+                        setTimeout(() => { // Simulate network delay
+                            // Example: Check if email is hardcoded as "taken"
+                            if (email === 'taken@example.com') {
+                                const emailInput = document.getElementById('registerEmail');
+                                emailInput.classList.add('is-invalid'); // Mark email as invalid
+                                // Use the dedicated feedback div for "taken" error
+                                document.getElementById('registerEmailTakenFeedback').textContent = 'Địa chỉ email này đã được sử dụng.';
+                                document.getElementById('registerErrorGeneral').textContent = 'Đăng ký thất bại, vui lòng kiểm tra lại thông tin.';
+                                isFormValid = false; // Mark form as invalid after server check
+                                registerForm.classList.add('was-validated'); // Re-apply was-validated if needed after async check
+                            } else {
+                                alert('Đăng ký thành công! (Simulation)');
+                                // bootstrap.Modal.getInstance(combinedModal).hide(); // Hide modal
+                                // Optionally switch to login tab after successful registration
+                                // const loginTab = new bootstrap.Tab(document.getElementById('login-tab-modal'));
+                                // loginTab.show();
+                                // resetFormValidation(registerForm); // Clear the registration form
+                            }
+                        }, 500);
+                        // --- END SIMULATION ---
+                    } else {
+                        // Handle case where initial checkValidity() or custom validation failed
+                        console.log('Register form invalid (front-end)');
+                        // Maybe show a general error message if specific ones aren't enough
+                        // document.getElementById('registerErrorGeneral').textContent = 'Vui lòng kiểm tra lại các trường được đánh dấu đỏ.';
+                    }
+
+                    // Add 'was-validated' class *after* all checks (including async simulation for demo)
+                    // Note: In a real scenario with AJAX, you'd add this class inside the AJAX callback
+                    // if validation (client + server) fails.
+                    if (!isFormValid) { // Only add if definitely invalid after sync checks
+                        registerForm.classList.add('was-validated');
+                    }
+
+
+                }, false); // Use capturing set to false
+            }
+        })(); // End of IIFE
+
+
+        // Function to switch tabs via footer link
+        function switchTab(event) {
+            event.preventDefault();
+            const loginTab = document.getElementById('login-tab-modal');
+            const registerTab = document.getElementById('register-tab-modal');
+            const bsLoginTab = new bootstrap.Tab(loginTab);
+            const bsRegisterTab = new bootstrap.Tab(registerTab);
+
+            if (loginTab.classList.contains('active')) {
+                bsRegisterTab.show();
+            } else {
+                bsLoginTab.show();
+            }
+            // Reset validation when switching tabs
+            resetFormValidation(document.getElementById('loginForm'));
+            resetFormValidation(document.getElementById('registerForm'));
+        }
+
+        // Add helper for resetting form validation (needed by switchTab and modal show)
+        function resetFormValidation(form) {
+            if (!form) return;
+            form.classList.remove('was-validated');
+            const inputs = form.querySelectorAll('.form-control, .form-select, .form-check-input');
+            inputs.forEach(input => {
+                input.classList.remove('is-invalid', 'is-valid');
+            });
+            const generalError = form.querySelector('[id$="ErrorGeneral"]');
+            if (generalError) generalError.textContent = '';
+            clearSpecificError('registerEmailTakenFeedback');
+            clearSpecificError('registerConfirmPasswordError');
+            clearSpecificError('loginErrorGeneral');
+        }
+
+        function clearSpecificError(elementId) {
+            const el = document.getElementById(elementId);
+            if (el) el.textContent = '';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+/* body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0d1b2a;
+    color: white;
+} */
+
+
+/* .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+} */
+
+
+/* .sign-in {
+    background: red;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+} */
+
+
+/* .hero {
+    position: relative;
+    text-align: left;
+    padding: 100px;
+    background: url("background.jpg") no-repeat center/cover;
+}
+
+.hero h1 {
+    font-size: 48px;
+    color: red;
+}
+
+.hero p {
+    max-width: 400px;
+    font-size: 18px;
+} */
+
+
+/* .btn {
+    background: red;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 20px;
+} */
+
+
+/* .car-image {
+    position: absolute;
+    right: 0px;
+    max-width: 700px;
+} */
+
+
+/* .product-section {
+    padding: 50px;
+    text-align: center;
+}
+
+.product-section h2 {
+    color: red;
+    font-size: 36px;
+    padding-right: 80%;
+}
+
+.product-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product {
+    background: #1b263b;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+
+.product img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.product h3 {
+    margin: 10px 0;
+}
+
+.product p {
+    color: #ccc;
+}
+
+.product .btn {
+    display: block;
+    margin-top: 10px;
+} */
